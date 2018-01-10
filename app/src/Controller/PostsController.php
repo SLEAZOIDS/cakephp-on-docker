@@ -21,8 +21,12 @@ class PostsController extends AppController
         $post =$this->Posts->newEntity();
         if ($this->request->is('post')) {
             $post = $this->Posts->patchEntity($post, $this->request->data);
-            $this->Posts->save($post);
-            return $this->redirect(['action'=>'index']);
+            if ($this->Posts->save($post)){
+                $this->Flash->success('Add Success');
+                return $this->redirect(['action'=>'index']);
+            } else {
+                $this->Flash->error('Add Error');
+            }
         }
         $this->set(compact('post'));
     }
