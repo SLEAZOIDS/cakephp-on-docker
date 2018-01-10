@@ -6,6 +6,6 @@ $this->assign('title', 'Blog Posts');
 
 <ul>
     <?php foreach ($posts as $post) : ?>
-        <li><?= h($post->title); ?></li>
+        <li><?= $this->Html->link($post->title, ['action'=>'view', $post->id]); ?></li>
     <?php endforeach; ?>
 </ul>
