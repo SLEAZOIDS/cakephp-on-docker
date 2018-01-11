@@ -9,6 +9,9 @@ $this->assign('title', 'Blog Posts');
 
 <ul>
     <?php foreach ($posts as $post) : ?>
-        <li><?= $this->Html->link($post->title, ['action'=>'view', $post->id]); ?></li>
+        <li>
+            <?= $this->Html->link($post->title, ['action'=>'view', $post->id]); ?>
+            <?= $this->Html->link('[EDIT]', ['action'=>'edit', $post->id], ['class'=>'fs12']); ?>
+        </li>
     <?php endforeach; ?>
 </ul>
