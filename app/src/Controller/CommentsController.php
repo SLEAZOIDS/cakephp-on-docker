@@ -24,10 +24,10 @@ class CommentsController extends AppController
         $this->request->allowMethod('post', 'delete');
         $comment =$this->Comments->get($id);
         if ($this->Comments->delete($comment)){
-            $this->Flash->success('Delete Success');
-            return $this->redirect(['action'=>'index']);
+            $this->Flash->success('Comment Delete Success');
+            return $this->redirect(['controller'=>'Posts', 'action'=>'view', $comment->post_id]);
         } else {
-            $this->Flash->error('Delete Error');
+            $this->Flash->error('Comment Delete Error');
         }
     }
 

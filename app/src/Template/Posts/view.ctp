@@ -15,6 +15,14 @@ $this->assign('title', 'Blog Detail');
     <?php foreach ($post->comments as $comment) : ?>
         <li>
             <?= h($comment->body); ?>
+            <?=
+                $this->Form->postLink(
+                    '[x]',
+                    ['controller'=>'Comments', 'action'=>'delete', $comment->id],
+                    ['confirm'=>'Are you sure?', 'class'=>'fs12']
+
+                );
+            ?>
         </li>
     <?php endforeach; ?>
 </ul>
